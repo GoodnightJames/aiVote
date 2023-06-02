@@ -1,5 +1,13 @@
-// Firebase configuration
-var config = {
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+
+<script>
+// Your web app's Firebase configuration
+var firebaseConfig = {
   apiKey: "AIzaSyC07q7g5RUt9IMAH6TfOcO-LnS1MLP0Iiw",
   authDomain: "aivote-842d3.firebaseapp.com",
   databaseURL: "https://aivote-842d3-default-rtdb.firebaseio.com/",
@@ -8,8 +16,9 @@ var config = {
   messagingSenderId: "1001056006585",
   appId: "1:1001056006585:web:5208ea815e6f8e8bad0668"
 };
-firebase.initializeApp(config);
 
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 function displayImages(images) {
@@ -39,3 +48,4 @@ function fetchImages() {
 }
 
 fetchImages(); // Fetch the images when the page loads
+</script>
