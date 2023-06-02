@@ -13,7 +13,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 function displayImages(images) {
-  var imageContainer = document.getElementById("imageContainer");
+  var imageContainer = document.getElementById("images-container");
   imageContainer.innerHTML = ""; // Clear the container
   for (var key in images) {
     var img = document.createElement("img");
