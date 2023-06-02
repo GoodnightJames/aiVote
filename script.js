@@ -9,7 +9,7 @@ function getImages() {
     fetch('images.json')
         .then(response => response.json())
         .then(data => {
-            images = data.images;
+            images = data;
             console.log('Images fetched:', images);
             displayImages();
         })
