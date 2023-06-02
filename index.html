@@ -14,29 +14,26 @@
     <div id="images-container" class="images-container">
         <!-- Images will be inserted here by displayImages() function -->
     </div>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
     <script>
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyC07q7g5RUt9IMAH6TfOcO-LnS1MLP0Iiw",
-            authDomain: "aivote-842d3.firebaseapp.com",
-            projectId: "aivote-842d3",
-            storageBucket: "aivote-842d3.appspot.com",
-            messagingSenderId: "1001056006585",
-            appId: "1:1001056006585:web:5208ea815e6f8e8bad0668",
-            measurementId: "G-P9FN6MY6ZE"
-        };
+        // This function will be called when the Firebase script is fully loaded.
+        function initializeFirebase() {
+            // Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyC07q7g5RUt9IMAH6TfOcO-LnS1MLP0Iiw",
+                authDomain: "aivote-842d3.firebaseapp.com",
+                projectId: "aivote-842d3",
+                storageBucket: "aivote-842d3.appspot.com",
+                messagingSenderId: "1001056006585",
+                appId: "1:1001056006585:web:5208ea815e6f8e8bad0668",
+                measurementId: "G-P9FN6MY6ZE"
+            };
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        
-        // Ensure Firebase is loaded before loading script.js
-        window.addEventListener('load', function() {
-            var script = document.createElement('script');
-            script.src = 'script.js';
-            document.body.appendChild(script);
-        });
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        }
     </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js" onload="initializeFirebase()"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
