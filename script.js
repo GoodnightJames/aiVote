@@ -1,8 +1,8 @@
-// Initialize Firebase
+// Firebase configuration
 var config = {
   apiKey: "AIzaSyC07q7g5RUt9IMAH6TfOcO-LnS1MLP0Iiw",
   authDomain: "aivote-842d3.firebaseapp.com",
-  databaseURL: "https://aivote-842d3.firebaseio.com", // Assuming this follows the typical pattern
+  databaseURL: "https://aivote-842d3-default-rtdb.firebaseio.com/",
   projectId: "aivote-842d3",
   storageBucket: "aivote-842d3.appspot.com",
   messagingSenderId: "1001056006585",
@@ -13,7 +13,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 function displayImages(images) {
-  var imageContainer = document.getElementById("images-container");
+  var imageContainer = document.getElementById("imageContainer");
   imageContainer.innerHTML = ""; // Clear the container
   for (var key in images) {
     var img = document.createElement("img");
