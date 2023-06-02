@@ -1,19 +1,30 @@
-const imagesContainer = document.getElementById('images-container');
+// Initialize Firebase database
+const db = firebase.database();
 
 fetch('images.json')
     .then(response => response.json())
-    .then(data => {
-        data.images.forEach(image => {
-            const img = document.createElement('img');
-            img.src = image.image_path;
-            imagesContainer.appendChild(img);
+    .then(data => displayImages(data.images));
 
-            img.addEventListener('click', function() {
-                // Add a new vote entry in Firebase
-                firebase.database().ref('votes').push({
-                    id: image.id,
-                    filename: image.filename
-                });
-            });
-        });
+function displayImages(images) {
+    const imagesContainer = document.getElementById('images-container');
+
+    images.forEach(image => {
+        const imgElement = document.createElement('img');
+        imgElement.src = image.image_path;
+        imgElement.alt = image.filename;
+        imgElement.addEventListener('click', () => voteForImage(image.id));
+
+        imagesContainer.appendChild(imgElement);
     });
+}
+
+function voteForImage(imageId) {
+    const imageRef = db.ref('images/' + imageId);
+    imageRef.transaction(currentVotes => {
+        if (currentVotes === null) {
+            return 1;
+        } else {
+            return currentVotes + 1;
+        }
+    });
+}
