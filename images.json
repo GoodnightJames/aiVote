@@ -17,8 +17,14 @@
         "image_path": "images/image3.jpg",
         "votes": 0,
         "last_vote": null
+      },
+      {
+        "id": 4,
+        "image_path": "images/image4.jpg",
+        "votes": 0,
+        "last_vote": null
       }
-      ...
+      // Add more images as needed
     ]
   }
   
