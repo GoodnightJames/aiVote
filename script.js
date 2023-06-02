@@ -38,9 +38,6 @@ function displayImages() {
         imageContainer.appendChild(imageWrapper);
     } else {
         const noImagesMessage = document.createElement('p');
-        noImagesMessage.textContent = 'NoApologies for the cut-off in the last message, here is the continuation of the JavaScript code:
-
-```javascript
         noImagesMessage.textContent = 'No more images available.';
         imageContainer.appendChild(noImagesMessage);
     }
