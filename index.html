@@ -30,7 +30,13 @@
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+        
+        // Ensure Firebase is loaded before loading script.js
+        window.addEventListener('load', function() {
+            var script = document.createElement('script');
+            script.src = 'script.js';
+            document.body.appendChild(script);
+        });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
