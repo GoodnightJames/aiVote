@@ -2,11 +2,15 @@ var images = [];
 var currentIndex = 0;
 var currentRound = 1;
 
+// Firebase Database reference
+var database = firebase.database();
+
 function getImages() {
     fetch('images.json')
         .then(response => response.json())
         .then(data => {
             images = data.images;
+            console.log('Images fetched:', images);
             displayImages();
         })
         .catch(error => console.error(error));
@@ -20,11 +24,12 @@ function displayImages() {
         const imageWrapper = document.createElement('div');
         imageWrapper.classList.add('image-wrapper');
 
-        for (let i = currentIndex; i < currentIndex + 2; i++) {
+        for (let i = currentIndex; i < currentIndex + 4; i++) {
             if (i < images.length) {
                 const img = document.createElement('img');
                 img.src = images[i].image_path;
                 img.alt = 'Image';
+                console.log('Image ID being added to image:', images[i].id);
                 img.addEventListener('click', () => voteImage(images[i].id));
                 imageWrapper.appendChild(img);
             }
@@ -33,6 +38,9 @@ function displayImages() {
         imageContainer.appendChild(imageWrapper);
     } else {
         const noImagesMessage = document.createElement('p');
+        noImagesMessage.textContent = 'NoApologies for the cut-off in the last message, here is the continuation of the JavaScript code:
+
+```javascript
         noImagesMessage.textContent = 'No more images available.';
         imageContainer.appendChild(noImagesMessage);
     }
@@ -41,32 +49,29 @@ function displayImages() {
 function voteImage(imageId) {
     console.log('Vote counted for imageId:', imageId);
 
-    // Add your logic here to handle the vote and move to the next pair
+    // Record vote in Firebase
+    var votesRef = database.ref('votes/' + imageId);
+    votesRef.transaction(function(currentVotes) {
+        // If votes has never been set, currentVotes will be `null`.
+        return (currentVotes || 0) + 1;
+    });
 
-    currentIndex += 2;
+    currentIndex += 4;
 
-    // Check if the current round is complete
     if (currentIndex >= images.length) {
         console.log('Round ' + currentRound + ' complete.');
 
-        // Check if the final round is reached
         if (currentRound === 1) {
             console.log('Final round reached.');
             console.log('Remaining images:', images);
-
-            // You can implement the logic for the final round as needed
-
             return;
         }
 
         currentRound++;
         currentIndex = 0;
-
-        // Shuffle the images for the next round
         shuffleImages();
     }
 
-    // Display the new pair of images
     displayImages();
 }
 
@@ -77,5 +82,4 @@ function shuffleImages() {
     }
 }
 
-// Call getImages to start the process
 getImages();
