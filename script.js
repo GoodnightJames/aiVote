@@ -1,11 +1,12 @@
 // Initialize Firebase
 var config = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  databaseURL: "YOUR_DATABASE_URL",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID"
+  apiKey: "AIzaSyC07q7g5RUt9IMAH6TfOcO-LnS1MLP0Iiw",
+  authDomain: "aivote-842d3.firebaseapp.com",
+  databaseURL: "https://aivote-842d3.firebaseio.com", // Assuming this follows the typical pattern
+  projectId: "aivote-842d3",
+  storageBucket: "aivote-842d3.appspot.com",
+  messagingSenderId: "1001056006585",
+  appId: "1:1001056006585:web:5208ea815e6f8e8bad0668"
 };
 firebase.initializeApp(config);
 
